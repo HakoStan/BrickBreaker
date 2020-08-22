@@ -11,13 +11,6 @@ public class MainMenuController : MonoBehaviour
         SceneManager.LoadScene(1);
     }
 
-    public void AboutButtonOnClick()
-    {
-        // YA :: TODO ::
-            // Show some other canvas maybe.
-            // Maybe Disable / Enable some canvas
-    }
-
     public void QuitGameButtonOnClick()
     {
         Application.Quit();
