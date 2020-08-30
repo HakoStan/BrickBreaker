@@ -610,7 +610,6 @@ GameObject:
   - component: {fileID: 447615930}
   - component: {fileID: 447615929}
   - component: {fileID: 447615933}
-  - component: {fileID: 447615934}
   m_Layer: 0
   m_Name: FrontWall
   m_TagString: Wall
@@ -707,18 +706,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &447615934
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 447615928}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9b97adf7aa849e41895e971a20ffb4f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &637217866
 GameObject:
   m_ObjectHideFlags: 0
@@ -2010,6 +1997,7 @@ GameObject:
   - component: {fileID: 1893360933}
   - component: {fileID: 1893360932}
   - component: {fileID: 1893360936}
+  - component: {fileID: 1893360937}
   m_Layer: 0
   m_Name: Floor
   m_TagString: Floor
@@ -2106,6 +2094,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1893360937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1893360931}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9b97adf7aa849e41895e971a20ffb4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1943900091
 GameObject:
   m_ObjectHideFlags: 0

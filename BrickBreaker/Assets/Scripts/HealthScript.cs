@@ -19,6 +19,7 @@ public class HealthScript : MonoBehaviour
             if (health <= 0)
             {
                 // DO: call game over function after implementation
+                // SceneManager.LoadScene(2);
             }
 
             if (health > numberOfHearts)
