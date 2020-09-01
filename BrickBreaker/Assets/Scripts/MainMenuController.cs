@@ -8,7 +8,7 @@ public class MainMenuController : MonoBehaviour
 
     public void StartButtonOnClick()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene("GameScene");
     }
 
     public void QuitGameButtonOnClick()
