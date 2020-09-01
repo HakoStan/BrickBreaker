@@ -4,10 +4,17 @@ using UnityEngine;
 
 public class FloorScript : MonoBehaviour
 {
+    public GameObject player;
+
+    void Start()
+    {
+        player = GameObject.Find("Player");
+    }
+
     void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.name == "Ball")
-            GameObject.Find("Player").GetComponent<HealthScript>().health--;
+            player.GetComponent<PlayerScript>().health--;
             return;
     }
 }

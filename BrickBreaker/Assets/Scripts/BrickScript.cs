@@ -15,7 +15,9 @@ public class BrickScript : MonoBehaviour
     {
         if (collision.gameObject.name != "Ball")
             return;
-        
+
+        GameObject.Find("Player").GetComponent<PlayerScript>().score += 100;
+
         hitCounter--;
         if (hitCounter == 0)
         {
