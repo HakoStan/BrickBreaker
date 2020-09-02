@@ -6,14 +6,27 @@ using UnityEngine.SceneManagement;
 public class GameOverScript : MonoBehaviour
 {
     public int score;
+    public GameObject scoreNumber;
+    public GameObject winOrLose;
+    public GameObject highScoreNumber;
+
     void OnEnable()
     {
-        GameObject.Find("ScoreNumber").GetComponent<UnityEngine.UI.Text>().text = PlayerPrefs.GetInt("score").ToString();
+        int score = PlayerPrefs.GetInt("score");
+        int highScore = PlayerPrefs.GetInt("highscore");
+        scoreNumber.GetComponent<UnityEngine.UI.Text>().text = score.ToString();
+        if (score > highScore)
+        {
+            PlayerPrefs.SetInt("highscore", score);
+            highScore = score;
+        }
+
+        highScoreNumber.GetComponent<UnityEngine.UI.Text>().text = highScore.ToString();
 
         int won = PlayerPrefs.GetInt("won");
         if (won == 1)
         {
-            GameObject.Find("WinOrLose").GetComponent<TMPro.TextMeshProUGUI>().text = "You Won!";
+            winOrLose.GetComponent<TMPro.TextMeshProUGUI>().text = "You Won!";
         }
     }
 

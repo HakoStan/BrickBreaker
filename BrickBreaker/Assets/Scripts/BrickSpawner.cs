@@ -11,9 +11,12 @@ public class BrickSpawner : MonoBehaviour
     public GameObject rightWall;
     public GameObject frontWall;
     public GameObject backWall;
+    public GameObject player;
     public float level=0;
     public int matrixScalar=4;
     public int yAxisDivider=2;
+    public Material oneHitMaterial;
+    public Material twoHitMaterial;
 
     private float diffX = 0f;
     private float diffY = 0f;
@@ -27,6 +30,15 @@ public class BrickSpawner : MonoBehaviour
         GameObject brickGo = GameObject.Instantiate(brickPrefab, position, brickRotation);
         brickGo.transform.localScale = brickScale;
         brickGo.GetComponent<BrickScript>().RecieveHitCount(hitCount);
+        
+        if (hitCount == 1)
+        {
+            brickGo.GetComponent<Renderer>().material = oneHitMaterial;
+        }
+        else if (hitCount == 2)
+        {
+            brickGo.GetComponent<Renderer>().material = twoHitMaterial;
+        }
 
         return brickGo;
     }
@@ -44,6 +56,8 @@ public class BrickSpawner : MonoBehaviour
         float y = celling.transform.position.y - 0.5f * celling.transform.localScale.y - 0.5f * brickScale.y;
         float z = backWall.transform.position.z + 0.5f * backWall.transform.localScale.z + 0.5f * brickScale.z;    
 
+        int numberOfBricks = 0;
+
         // z axis
         for (int i = 0; i < matrixScalar; i++)
         {
@@ -55,6 +69,7 @@ public class BrickSpawner : MonoBehaviour
                 {
                     // TODO :: Instead random build hitCount2 and hitCount1 bricks according to the game level
                     CreateBrick(new Vector3(x,y,z), brickScale, (int)Random.Range(1,3));
+                    numberOfBricks++;
                     x += diffX/matrixScalar;
                 }
                 x = leftWall.transform.position.x + 0.5f * leftWall.transform.localScale.x + 0.5f * brickScale.x;
@@ -63,8 +78,6 @@ public class BrickSpawner : MonoBehaviour
             y = celling.transform.position.y - 0.5f * celling.transform.localScale.y - 0.5f * brickScale.y;
             z += diffZ/matrixScalar;
         }
-        
-
-        
+        player.GetComponent<PlayerScript>().numberOfActiveBricks = numberOfBricks;
     }
 }

@@ -19,7 +19,7 @@ public class BallScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && !m_isBallMoving)
         {
             m_isBallMoving = true;
             FirstBounce();
@@ -29,17 +29,11 @@ public class BallScript : MonoBehaviour
         {
             transform.position = new Vector3(m_paddle.transform.position.x, m_paddle.transform.position.y + 1f, m_paddle.transform.position.z);
         }
-        else
-        {
-            
-        }
     }
 
     // First Time Setuo of Bounce
     void FirstBounce()
     {
-        Debug.Log("BOUNCE");
-
         float sx = Random.Range(0, 2) == 0 ? -1 : 1;
         float sy = Random.Range(0, 2) == 0 ? -1 : 1;
         float sz = Random.Range(0, 2) == 0 ? -1 : 1;
@@ -47,7 +41,5 @@ public class BallScript : MonoBehaviour
         Rigidbody rb = GetComponent<Rigidbody>();
 
         rb.velocity = new Vector3(m_speed * sx, m_speed * 1, m_speed * sy);
-
-        //rb.AddForce(Vector3.up * m_firstBouncePower);
     }
 }

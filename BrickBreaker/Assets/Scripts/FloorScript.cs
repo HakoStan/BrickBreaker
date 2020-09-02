@@ -6,15 +6,11 @@ public class FloorScript : MonoBehaviour
 {
     public GameObject player;
 
-    void Start()
-    {
-        player = GameObject.Find("Player");
-    }
-
     void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.name == "Ball")
-            player.GetComponent<PlayerScript>().health--;
-            return;
+        {
+            player.GetComponent<PlayerScript>().LoseHealth();
+        }
     }
 }

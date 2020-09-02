@@ -5,10 +5,32 @@ using UnityEngine;
 public class BrickScript : MonoBehaviour
 {
     public int hitCounter = 1;
+    public Material oneHitMaterial;
+    public GameObject healthAbilityPrefab;
+
+    private GameObject player;
+    private PlayerScript playerScript;
+
+    void Start()
+    {
+        player = GameObject.Find("Player");
+        playerScript = player.GetComponent<PlayerScript>();
+    }
 
     public void RecieveHitCount(int hitCounter)
     {
         this.hitCounter = hitCounter;
+    }
+
+    private void SpawnHealthAbility()
+    {
+        int rand = Random.Range(0, 2);
+
+        // probability of 20% if it is a true Random
+        if (rand == 1)
+        {
+            GameObject healthGO = GameObject.Instantiate(healthAbilityPrefab, gameObject.transform.position, new Quaternion(0.0f, 0.0f, 0.0f, 0.0f));
+        }
     }
 
     void OnCollisionEnter(Collision collision)
@@ -16,12 +38,19 @@ public class BrickScript : MonoBehaviour
         if (collision.gameObject.name != "Ball")
             return;
 
-        GameObject.Find("Player").GetComponent<PlayerScript>().score += 100;
+        playerScript.score += 100;
 
         hitCounter--;
         if (hitCounter == 0)
         {
             gameObject.SetActive(false);
+            playerScript.numberOfActiveBricks--;
         }
+        else if (hitCounter == 1)
+        {
+            gameObject.GetComponent<Renderer>().material = oneHitMaterial;
+        }
+
+        SpawnHealthAbility();
     }
 }

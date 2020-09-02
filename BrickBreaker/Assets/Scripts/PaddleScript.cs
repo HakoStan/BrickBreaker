@@ -30,15 +30,4 @@ public class PaddleScript : MonoBehaviour
             transform.position = new Vector3(transform.position.x, m_yPosition, transform.position.z);
         }
     }
-
-    // YA :: TODO :: Future ::
-    // Maybe We Will Use It When We Add Velocity
-    // private void OnCollisionEnter(Collision other) 
-    // {
-    //     if(other.gameObject.CompareTag("Wall"))
-    //     {
-    //         Debug.Log("TEST2");
-    //         m_rigidBody.velocity = Vector3.zero;
-    //     }
-    // }
 }
