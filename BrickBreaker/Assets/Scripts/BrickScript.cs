@@ -24,9 +24,9 @@ public class BrickScript : MonoBehaviour
 
     private void SpawnHealthAbility()
     {
-        int rand = Random.Range(0, 2);
+        int rand = Random.Range(0, 3);
 
-        // probability of 20% if it is a true Random
+        // Probability of 33% if real Random
         if (rand == 1)
         {
             GameObject healthGO = GameObject.Instantiate(healthAbilityPrefab, gameObject.transform.position, new Quaternion(0.0f, 0.0f, 0.0f, 0.0f));
